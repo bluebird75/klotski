@@ -1,0 +1,39 @@
+#!/bin/sh
+
+echo 'Changing to /tmp'
+cd /tmp
+rm -rf klotski
+
+echo 'Checkouting klotski from cvs'
+cvs -d /mnt/cvs export -r HEAD -d klotski philippe/klotski
+cd klotski
+
+echo 'Generating pixmaps'
+export LD_LIBRARY_PATH=/usr/local/lib:/opt/be/qt-copy/lib
+cd pixmaps
+python generate_pix.py
+cd ..
+rm -f makerelease
+
+
+echo 'Making unix release'
+cd ..
+tar Icvf ~/klotski-beta1.0.tar.bz2 klotski/*
+echo done.
+
+cd klotski
+echo 'Making Windows release'
+
+echo 'Converting files'
+admin_files="INSTALL LICENSE TODO README"
+for i in $admin_files;
+do 
+	recode lat1..ibmpc $i && mv $i $i.txt && echo $i generated.
+done
+
+cd ..
+zip -r ~/klotski-beta10.zip klotski
+echo done.
+
+
+

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pkgdatadir=@pkgdatadir@
+
+if [ -x $pkgdatadir ];
+then
+	#echo $pkgdatadir exists!
+	cd $pkgdatadir
+fi
+
+python -O klotski.py

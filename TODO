@@ -1,0 +1,21 @@
+- change map names
+- test every map so that it is solvable
+- hide goal in map feature
+- pixmap for klotski in the about box
+
+- test under windows
+- find how to distribute PyQt
+
+
+Next release:
+-------------
+- disable undo/redo when appropriate
+- save board state
+- replay
+- also count steps
+- store high score
+- possibility to load custom maps
+
+- new special tiles like in bricks
+- export to brick I ?
+- bricks levels
