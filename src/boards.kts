@@ -21,13 +21,13 @@ Possible pieces are :
 
 
 <Splash>
-@--  --                       @
-@-a zz-                       @
-@-a*z   c ... eee eee a cc aaa@
-@-**    c . .  d  e   abc   b @
-@-b*i   c . .  d   e  bb    b @
-@-b ii- c . .  d    e abc   b @
-@--  -- c ...  d  eee a cc aaa@
+@--  --                         @
+@-a zz-                         @
+@-a*z   c   ... eee eee a cc aaa@
+@-**    c   . .  d  e   abc   b @
+@-b*i   c   . .  d   e  bb    b @
+@-b ii- c   . .  d    e abc   b @
+@--  -- ccc ...  d  eee a cc aaa@
 
 <Easy>
 @          @

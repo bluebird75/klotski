@@ -35,15 +35,26 @@ def cos( a, b ) :
 	nb = math.sqrt( b[0]**2 + b[1]**2 )
 	return float(scal) / ( na * nb )
 
-#class Board (QWidget):
+def setBgCol( w, col ):
+	if 0:
+		pal = w.palette()
+		pal.setColor( QPalette.Active, QColorGroup.Background, col )
+		w.setPalette( pal )
+
 class Board (QCanvasView):
 	def __init__(self, cnv, parent):
-		#QWidget.__init__(self, parent)
 		QCanvasView.__init__(self, None, parent)
-		self.map = []
-		#self.viewport().setBackgroundColor( Qt.darkRed)
+		self.setSizePolicy( QSizePolicy( QSizePolicy.Expanding,
+			QSizePolicy.Expanding) )
+		self.setLineWidth( 2 )
+		self.setFrameShape( QFrame.NoFrame )
+		self.setStaticBackground( 0 )
+		self.setVScrollBarMode( QScrollView.AlwaysOff )
+		self.setHScrollBarMode( QScrollView.AlwaysOff )
+		setBgCol( self.viewport(), self.darkRed )
 		self.canvas_item_dict = {}
 		self.m_canvas = None
+		self.map = []
 
 		self.draging = 0
 		self.clicking = 0
@@ -52,13 +63,13 @@ class Board (QCanvasView):
 		self.drag_y = -1
 		self.drag_timer = QTimer( self )
 		QObject.connect( self.drag_timer, SIGNAL("timeout()"), self.set_draging )
+		setBgCol( self, Qt.red )
 
 	pix_tiles = None
 	tiles_mask = None
 
 	def load_tiles(self):
 		img_tile = QImage( tile_file_name );
-		#img_tile = img_tile.convertDepth( 16 )
 
 		w = img_tile.width()
 		h = img_tile.height()
@@ -66,13 +77,10 @@ class Board (QCanvasView):
 
 		# Build mask
 		img_mask = QImage( w, h, 1, 2, QImage.LittleEndian )
-		#img_mask.fill(1)
 		for x in range(w):
 			for y in range(h):
-				#print "pixel : ", img_tile.pixel(x,y)
 				if (img_tile.pixel(x,y) == TRANSP_COLOR):
 					img_mask.setPixel( x, y, 0 )
-					#print "Setting transp color"
 				else:
 					img_mask.setPixel( x, y, 1 )
 
@@ -83,7 +91,6 @@ class Board (QCanvasView):
 		Board.pix_tiles = QPixmap() 
 		if not Board.pix_tiles.convertFromImage( img_tile ):
 			print "Could not convert to Pixmap !"
-		#Board.pix_tiles.setMask( pix_mask )
 
 		
 
@@ -130,7 +137,7 @@ class Board (QCanvasView):
 
 
 
-	# Generate a QCavas object from a map and fills up the
+	# Generate a QCanvas object from a map and fills up the
 	# canvas_item_dict
 	def generate_canvas(self, m):
 		global global_qcpa
@@ -148,7 +155,6 @@ class Board (QCanvasView):
 
 		# Generate a QCanvasSprite from a QPixmap object
 		def pixmap_to_sprite(pix, cnv) :
-
 			return qs
 
 		#  set the background color <=> fill
@@ -185,7 +191,6 @@ class Board (QCanvasView):
 					cs.setZ( 1 )
 				else: cs.setZ( 10 )
 
-
 				if not self.canvas_item_dict.has_key( pid ):
 					self.canvas_item_dict[pid] = []
 				self.canvas_item_dict[pid].append( cs )
@@ -194,9 +199,10 @@ class Board (QCanvasView):
 
 	def set_map(self,m): 
 		self.map = m
-		#self.setFixedSize( self.map.w * TILE_SIZE, self.map.h * TILE_SIZE )
+		self.setFixedSize( self.map.w * TILE_SIZE, self.map.h * TILE_SIZE )
 		self.generate_canvas(m)
-		self.setMaximumSize( self.sizeHint() )
+		#self.setMaximumSize( self.sizeHint() )
+		#self.setMinimumSize( self.sizeHint() )
 		self.update()
 
 	# Draw the tile located at (x,y) on the painter p	
