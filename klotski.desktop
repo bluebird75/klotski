@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=beta 1.0
+Name=Klotski
+Type=Application
+Comment=A small brick game
+Exec=klotski
+Icon=
+Path=
+Terminal=false

@@ -1,0 +1,133 @@
+
+				Tile themes
+	
+
+Adding a new tile theme is really simple. You just need to replace the file
+klotski-tiles.png with an image of your tiles. I would be glad to include it
+in a future version of klotski.
+
+
+Theme file organisation:
+========================
+To generate a new theme, enter the pixmap dir and look around:
+
+There are five kind of tiles (walls, special walls, pieces, main piece, goal)
+and each one has its own directory, in which its graphic is defined. 
+
+In these directory, you will always find the same files :
+inner.xpm
+hor_edge.xpm
+ver_edge.xpm
+corner.xpm
+miss_corner.xpm
+
+In klotski, each piece is composed of one or many tiles. A tile is the
+smallest possible piece, i.e. a simple square. 
+
+A tile, is composed of four quarters : top-left, top-right,
+bottom-left and bottom-right. The quarter which will be drawn is chosen
+according to the shape of the piece, or put differently, according to the
+neighbours of the current tile. 
+
+Each pixmap contains the four quarters used to draw a tile. All the
+possible configuration are handled with the provided files.
+
+
+Imagine we are drawing the quarter X of our tile 't'. We are going to
+choose the quarter according to the type of the tiles 1, 2, 3.
+
+  11 22
+  11 22
+  
+  33 Xt
+  33 tt
+
+
+
+Possible quarters are :
+
+inner:
+
+  tt tt
+  tt tt
+  
+  tt Xt
+  tt tt
+
+Our quarter is in the center of a big tile.
+
+
+ 
+ 
+hor_edge:
+
+  aa bb
+  aa bb
+  
+  tt Xt
+  tt tt
+
+Our quarter is at an horizontal edge of the tile.
+
+
+  
+ver_edge:
+
+  aa tt
+  aa tt
+  
+  cc Xt
+  cc tt
+  
+Our quarter is at a vertical edge of the tile.
+
+
+
+
+corner:
+
+  aa bb
+  aa bb
+  
+  cc Xt
+  cc tt
+
+Our quarter is in the corner of the tile.
+
+
+
+miss-corner:
+
+  aa tt
+  aa tt
+  
+  tt Xt
+  tt tt
+
+Our quarter is in an inner corner of the tile.
+
+
+
+Once the pixmap file is choosen, I just copy the top-left quarter of it 
+to the tile. For the other quarters, I use exactly the same process
+except that the neighbours I check are not the same.
+
+
+So if you understood all that and if you are a graphist, it should be fairly
+easy for you to do a new theme.  Just override the existing pixmaps and run
+"python generate.py" to produce a new klotski-tiles.png .
+
+The color (0,0,0) is the transparent color for the tiles and the size of a
+tile is currently 32x32. But these parameters can be changed by editing the file
+enum.py
+
+
+
+
+
+
+
+
+
+
+  
