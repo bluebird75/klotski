@@ -21,8 +21,6 @@ import sys
 
 import have_pyqt
 
-	
-
 from enum import *
 from map import Map, load_maps
 from board import Board
@@ -319,31 +317,33 @@ For more information about PyQt, see <a href="http://www.thekompany.com/projects
 		print "move list index : ", self.move_index
  
 
-print "Building qapp...",
-a = QApplication( sys.argv )
-print "done."
+def main():
+	print "Building qapp..."
+	a = QApplication( sys.argv )
+	print "done."
 
-print "loading maps...",
-try:
-	maps = load_maps( "boards.kts" )
-except:
-	#raise
-	# oops, something went wrong
-	QMessageBox.critical( None , "Klotski - error", "An error occured while loading the maps:\n\n" + str(sys.exc_info()[1]) )
-	print "failed!"
-	sys.exit(1)
-print "done."
+	print "loading maps...",
+	try:
+		maps = load_maps( "boards.kts" )
+	except:
+		#raise
+		# oops, something went wrong
+		QMessageBox.critical( None , "Klotski - error", "An error occured while loading the maps:\n\n" + str(sys.exc_info()[1]) )
+		print "failed!"
+		sys.exit(1)
+	print "done."
 
-print "Building Klotski...",
-klotski = Klotski(maps)
-print "done."
+	print "Building Klotski...",
+	klotski = Klotski(maps)
+	print "done."
 
-a.setMainWidget( klotski )
-a.connect(a, SIGNAL('lastWindowClosed()'), a, SLOT('quit()'))
-klotski.show()
-a.exec_loop()
-del klotski
+	a.setMainWidget( klotski )
+	a.connect(a, SIGNAL('lastWindowClosed()'), a, SLOT('quit()'))
+	klotski.show()
+	a.exec_loop()
+	del klotski
 
 
+if __name__ == '__main__': main()
 
 # vi:set ts=4 sts=0 sw=4:
