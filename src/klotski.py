@@ -278,7 +278,6 @@ def main():
 		# oops, something went wrong
 		QMessageBox.critical( None , "Klotski - error", "An error occured while loading the maps:\n\n" + str(sys.exc_info()[1]) )
 		sys.exit(1)
-	print "done."
 
 	klotski = Klotski(maps)
 

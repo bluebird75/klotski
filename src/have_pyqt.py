@@ -8,7 +8,6 @@ try:
 
 	if qtv3:
 		from qtcanvas import *
-	
 
 except ImportError:
 	str = """Can not import Qt!
