@@ -22,7 +22,7 @@
 import math
 from enum import *
 from map import Map
-from qt import *
+from have_pyqt import *
 
 # workaround for the fact that QCAnvasSprite doesn't store a ref to 
 # the QPixmapArray
@@ -164,7 +164,12 @@ class Board (QCanvasView):
 				if pid == Piece.space : continue 
 
 				self.set_tile_pix( pix, mask, x, y )
-				qcpa = QCanvasPixmapArray( [ pix ], [ QPoint(0,0) ] )
+				if qtv3:
+					qpa = QPointArray(1)
+					qpa.setPoint(0, 0, 0)
+					qcpa = QCanvasPixmapArray( [ pix ], qpa )
+				else:
+					qcpa = QCanvasPixmapArray( [ pix ], [ QPoint(0,0) ] )
 				# If we don't hold a ref to the pixmaparray, it will get
 				# destroyed
 				global_qcpa.append( qcpa )

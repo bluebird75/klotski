@@ -4,6 +4,11 @@ import sys
 
 try:
 	from qt import *
+	qtv3 = map(int, qVersion().split('.')) >= [3,0,0]
+
+	if qtv3:
+		from qtcanvas import *
+	
 
 except ImportError:
 	str = """Can not import Qt!
