@@ -44,6 +44,7 @@ def setBgCol( w, col ):
 class Board (QCanvasView):
 	def __init__(self, cnv, parent):
 		QCanvasView.__init__(self, None, parent)
+		self.map = None
 		self.setSizePolicy( QSizePolicy( QSizePolicy.Expanding,
 			QSizePolicy.Expanding) )
 		self.setLineWidth( 2 )
@@ -92,7 +93,12 @@ class Board (QCanvasView):
 		if not Board.pix_tiles.convertFromImage( img_tile ):
 			print "Could not convert to Pixmap !"
 
-		
+	# Called when a s_wall is hit by the main piece, to hide it
+	def del_s_wall( self, xy ):
+		x, y = tuple(xy)
+		for cs in self.canvas_item_dict[ Piece.s_wall ]:
+			if cs.x() == x * TILE_SIZE and cs.y() == y * TILE_SIZE:
+				cs.setVisible( 0 )
 
 	# Generate a QPixmap representing the map (to be used as an icon)
 	def generate_mini_map(self, m):
@@ -153,10 +159,6 @@ class Board (QCanvasView):
 		self.m_canvas = new_canvas
 		self.canvas_item_dict = {}
 
-		# Generate a QCanvasSprite from a QPixmap object
-		def pixmap_to_sprite(pix, cnv) :
-			return qs
-
 		#  set the background color <=> fill
 		#self.m_canvas.setBackgroundColor( Qt.darkRed)
 		self.m_canvas.setBackgroundColor( Qt.black)
@@ -198,6 +200,9 @@ class Board (QCanvasView):
 				cs.show()
 
 	def set_map(self,m): 
+		if self.map:
+			QObject.disconnect( self.map, PYSIGNAL("del_s_wall()"), self.del_s_wall )
+		QObject.connect( m, PYSIGNAL("del_s_wall()"), self.del_s_wall )
 		self.map = m
 		self.setFixedSize( self.map.w * TILE_SIZE, self.map.h * TILE_SIZE )
 		self.generate_canvas(m)
@@ -205,7 +210,7 @@ class Board (QCanvasView):
 		#self.setMinimumSize( self.sizeHint() )
 		self.update()
 
-	# Draw the tile located at (x,y) on the painter p	
+	# Draw the tile located at (x,y) inside the pixmap pix
 	def set_tile_pix(self, pix, mask, x, y):
 
 		pid = self.map.pid(x,y)
@@ -277,6 +282,9 @@ class Board (QCanvasView):
 	def move( self, pid, d ):
 		dx, dy = d
 		sz = len(self.canvas_item_dict[pid])
+
+		# For big tiles, we need to move big step by big step to keep smooth
+		# display. For small tiles, we can move pixel by pixel.
 		if (sz < 3): incr = 1
 		elif sz < 8: incr = 2
 		elif sz < 16: incr = 4
