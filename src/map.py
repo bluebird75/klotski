@@ -18,10 +18,12 @@
 
 import string, copy
 from enum import *
-#from qt import *
+from pprint import pprint
+from qt import QObject
 
-class Map:
+class Map(QObject):
 	def __init__(self): 
+		QObject.__init__(self)
 		self.map=[]
 		self.goal = []
 		self.s_wall = []
@@ -106,9 +108,20 @@ class Map:
 		for p in self.goal:
 			if move_map[ p[1] ][ p[0] ] == Piece.space:
 				move_map[ p[1] ][ p[0] ] = Piece.goal
-		for p in self.s_wall:
+
+		to_be_del_idx = []
+		for i in range(len(self.s_wall)):
+			p = self.s_wall[i]
 			if move_map[ p[1] ][ p[0] ] == Piece.space:
 				move_map[ p[1] ][ p[0] ] = Piece.s_wall
+			elif move_map[ p[1] ][ p[0] ] == Piece.main:
+				# no longer a s_wall
+				to_be_del_idx.append( i )
+
+		to_be_del_idx.reverse()
+		for i in to_be_del_idx:
+			self.emit( PYSIGNAL( 'del_s_wall()' ), (self.s_wall[i],) )
+			del self.s_wall[i]
 					
 		self.map = move_map
 

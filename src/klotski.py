@@ -30,7 +30,7 @@ def reverse_move( d ):
 	return ( -d[0], -d[1] )
 
 class Klotski (QMainWindow):
-	def __init__(self, maps):
+	def __init__(self, maps, firstBoard=None):
 		QMainWindow.__init__(self, None, "Klotski")
 		self.map = None
 		self.moves = 0
@@ -57,8 +57,12 @@ class Klotski (QMainWindow):
 		self.setCaption( "Klotski" )
 		self.setIcon( QPixmap( "klotski-icon.png" ) ) 
 		self.title_label.setText( "Klotski" )
-		self.new_level( self.levels_by_id[0] )
-		self.move_enabled = 0
+		if firstBoard:
+			self.new_level( self.levels_by_id[int(firstBoard)] )
+			self.move_enabled = 1
+		else:
+			self.new_level( self.levels_by_id[0] )
+			self.move_enabled = 0
 
 	### needs board object to be already created
 	def init_misc_gui(self):
@@ -279,7 +283,22 @@ def main():
 		QMessageBox.critical( None , "Klotski - error", "An error occured while loading the maps:\n\n" + str(sys.exc_info()[1]) )
 		sys.exit(1)
 
-	klotski = Klotski(maps)
+	firstBoard = None
+	if len(sys.argv)>1: 
+		firstBoardName = sys.argv[1]
+		for m in maps:
+			if maps[m].name == firstBoardName:
+				firstBoard = m
+				break
+		else:
+			print "No such map: ", firstBoardName
+			print 'Map List:'
+			for m in maps:
+				print maps[m].name
+
+	print "Building Klotski...",
+	klotski = Klotski(maps, firstBoard)
+	print "done."
 
 	a.setMainWidget( klotski )
 	a.connect(a, SIGNAL('lastWindowClosed()'), a, SLOT('quit()'))

@@ -331,7 +331,7 @@ Possible pieces are :
 @    #   nn****#xxxx@
 @bbb ###########xxxx@
 @bbb   fff  ggg   . @
-@ eeeeefff      ....@
+@  eeeefff      ....@
 
 
 <SunShine>
