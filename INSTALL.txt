@@ -3,58 +3,21 @@
 	Klotski installation instructions
 
 
-Klotski requires Python, Qt (v2.2) and PyQt (v2.1) to run.
+Windows users:
+==============
+
+Klotski comes in self-installing package.
 
 
 UNIX users:
 ===========
 
-- Qt: 
-The Qt from Kde 2 is ok. Else, you can download from here:
-http://www.trolltech.com
+You need, Qt (2 or 3), python and PyQt
 
-- Python:
-I tested klotski with python 1.5.2 . I guess it works with other versions of the
-python interpreter.
-
-- PyQt:
-You'll need PyQt v2.1 or higher to make Klotski run (v2.0 doesn't work). You
-can download it from http://www.thekompany.com/projects/pykde/download.php3 .
-But because it takes hours to compile, I'll try to provide a shared library
-compiled for x86, which should work in most of the cases.
-
-- Normal installation:
 To install klotski, just type 'make install'. 
 Then type 'klotski' to run klotski. 
 
 You can change the default installation location of klotski (/usr/local/... ) 
 by editing the Makefile and changing the prefix variable.
 
-
-Windows users:
-==============
-
-Klotski for windows requires the following programs to be installed:
-
-- Python:
-I tested Klotski only with python 1.6 . You can download it 
-from http://www.python.org/1.6/download_win.html.
-
-- Qt and PyQt:
-PyQt for windows contains Qt and you can download it from
-http://www.thekompany.com/projects/pykde/download.php3
-
-Installation:
-There is no specific installation instructions for windows. Just run
-klotski.bat to launch klotski. If it doesn't while python and PyQt are there,
-it is probably because it can't find them. In klotski.bat, uncomment the lines setting the path and edit them te reflect your installation.
-
-
-Remarks:
-========
-
-There is a standard module in python to handle installation of python programs
-(DistUtils) but I didn't find how to install data files with this. So I just
-used a good old makefile to handle all this. If you know a better way to
-handle all this, please tell me.
 

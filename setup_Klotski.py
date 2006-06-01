@@ -21,12 +21,13 @@ import py2exe, sys, os
 from distutils.core import setup
 from packaging import *
 
-SCRIPTPATH = r'd:\philippe\phil-cvs\devel\klotski\src'
+VERSION = '1.2'
+SCRIPTPATH = r'd:\work\work\klotski\src'
 sys.path.append( SCRIPTPATH ) 
 SETUPFILE = "Setup - Klotski"
 SCRIPTNAME = r"klotski"
 
-SETUPFILE += ' - %s' % datestr()
+SETUPFILE += ' - %s' % VERSION
 
 # clean directories of previous build
 cleanTempDir()
@@ -40,7 +41,7 @@ dictAppli = {
 	'APPLINAME' : 	'Klotski',
 	'DESC' : 		'Klotski',
     'SCRIPTPATH' :  SCRIPTPATH,
-	'VERSION' : 	datestr_decimal(),
+	'VERSION' : 	VERSION,
 	'SCRIPTS' : 	[ os.path.join( SCRIPTPATH, SCRIPTNAME + ".py" ) ],
 	'DATAFILES' : 	[ 
 		('.', [ os.path.join( SCRIPTPATH, 'klotski-tiles.png' ),

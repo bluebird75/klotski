@@ -1,3 +1,4 @@
+-----
 - change map names
 - test every map so that it is solvable
 - hide goal in map feature
