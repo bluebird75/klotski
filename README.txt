@@ -10,13 +10,11 @@ french) "Ane rouge".  The goal is to bring the red piece to its destination
 by moving other pieces. It sounds simple but it is a real brainteaser.
 
 There was a klotski game on Windows 3.1, and this is were all levels are from.
-There is also a basic gnome version of klotski at xxx. I had a look at it
-before starting Klotski, so some design ideas have probably slipped from there
-:-)
+I had a look at it before starting Klotski, so some design ideas have probably
+slipped from there :-)
 
-Klotski requires that python and PyQt are installed on the target computer I
-have run it under Windows 98 and Linux, and it is supposed to run on any
-flavour of Unix or Windows.
+Klotski requires that python and PyQt on Linux. On Windows, the package
+contains everything you need to play.
 
 Check the INSTALL file for details on how to customize installation. Note that
 this is not standard installation procedure with configure and so on, so
@@ -45,3 +43,5 @@ Contributions and feedback are gladly welcomed. Especially, bug, new levels or
 new tile themes. To add new levels, just edit boards.kts, the format is pretty
 simple.  To add new tile themes, look at pixmap/THEMES.txt and replace the
 image klotski-tiles.png .
+
+
