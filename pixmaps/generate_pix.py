@@ -7,7 +7,7 @@
 # subdirs
 #
 # Version   : $Id$
-# Copyright : (C) 2000 by Philippe Fremy <pfremy@chez.com>
+# Copyright : (C) 2006 by Philippe Fremy <phil@freehackers.org>
 # License   : Gnu GPL (see file LICENSE)
 #
 #  This program is free software; you can redistribute it and/or modify 

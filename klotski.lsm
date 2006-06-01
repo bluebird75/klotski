@@ -1,14 +1,12 @@
 Begin3
 Title:          Klotski
-Version:        beta 1.0
+Version:        1.2
 Entered-date:   23JAN01
-Description:    A program to merge files and directories
+Description:    Brick game
 Keywords:       python Qt PyQt klotski brick game
-Author:         Philippe Fremy <pfremy@chez.com> 
-Maintained-by:  Philippe Fremy <pfremy@chez.com> 
-Primary-site:   http://aquila.rezel.enst.fr/philippe/klotski/
-				32kB klotski-beta1.0.tar.bz2
-Home-page:      http://aquila.rezel.enst.fr/philippe/klotski/
+Author:         Philippe Fremy <phil@freehackers.org>
+Maintained-by:  Philippe Fremy <phil@freehackers.org>
+Home-page:      http://phil.freehackers.org/klotski/
 Platforms:      Unix and Windows
 Copying-policy: GNU General Public License
 End
