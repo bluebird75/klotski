@@ -1,7 +1,7 @@
 					Klotski
 
 
-       by Philippe Fremy <pfremy@chez.com>
+       by Philippe Fremy <phil@freehackers.org>
        Graphics by Ben Adler <benadler@bigfoot.de>
 
 

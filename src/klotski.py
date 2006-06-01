@@ -7,7 +7,7 @@
 # widget.
 #
 # Version   : $Id$
-# Copyright : (C) 2000 by Philippe Fremy <pfremy@chez.com>
+# Copyright : (C) 2000 by Philippe Fremy <phil@freehackers.org>
 # License   : Gnu GPL (see file LICENSE)
 #
 #  This program is free software; you can redistribute it and/or modify 
@@ -239,7 +239,7 @@ class Klotski (QMainWindow):
 
 	def about(self):
 	    QMessageBox.about(self, 'About Klotski',
-		"""Klotski	     by Philippe Fremy <pfremy@chez.com>
+		"""Klotski	     by Philippe Fremy <phil@freehackers.org>
 Graphics by Ben Adler <benadler@bigfoot.de
 
 Klotski is the computer superseed of a small game known (in french) 

@@ -18,7 +18,7 @@ rm -f makerelease
 
 echo 'Making unix release'
 cd ..
-tar jcvf ~/klotski-1-1.tar.bz2 klotski/*
+tar jcvf ~/klotski-1-2.tar.bz2 klotski/*
 echo done.
 
 cd klotski
@@ -27,7 +27,7 @@ echo 'Making Windows release'
 echo 'Converting files'
 
 cd ..
-zip -r ~/klotski-1-1.zip klotski
+zip -r ~/klotski-1-2.zip klotski
 echo done.
 
 
