@@ -104,7 +104,7 @@ class Klotski (QMainWindow):
 		if m.name != NAME_SPLASH_SCREEN:
 			# display the name of the board
 			self.setWindowTitle( "Klotski - " + m.name )
-		self.title_label.setText( m.name )
+			self.title_label.setText( m.name )
 		else:
 			# display the splash screen
 			self.setWindowTitle( "Klotski" )
@@ -244,7 +244,7 @@ class Klotski (QMainWindow):
 
 def main() -> None:
 	a = QApplication( sys.argv )
-		maps = load_maps( "boards.kts" )
+	maps = load_maps( "boards.kts" )
 
 	firstBoard = None
 	if len(sys.argv)>1: 

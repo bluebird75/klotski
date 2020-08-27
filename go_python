@@ -1,3 +1,0 @@
-
-export LD_LIBRARY_PATH=/opt/be/qt-copy/lib/:/usr/local/lib
-#export PYTHONPATH=/home/philippe/python/klotski/lib
