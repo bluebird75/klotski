@@ -11,7 +11,7 @@ Theme file organisation:
 ========================
 To generate a new theme, enter the pixmap dir and look around:
 
-There are five kind of tiles (walls, special walls, pieces, main piece, goal)
+There are five kind of tiles (walls, special walls, pieces, heart piece, goal)
 and each one has its own directory, in which its graphic is defined. 
 
 In these directory, you will always find the same files :

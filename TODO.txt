@@ -1,22 +1,21 @@
------
-- change map names
-- test every map so that it is solvable
-- hide goal in map feature
-- pixmap for klotski in the about box
 
-- test under windows
-- find how to distribute PyQt
+- package under pip
+- disable undo/redo when appropriate (splash screen for example)
+- test with the oldest possible version of Python / PyQt
+- add automatic tests based on QEvent generation
+- select first board when opening the Board for the first time
+- package under windows
+- add reference to homepage on freehackers
 
 
 Next release:
 -------------
-- disable undo/redo when appropriate
 - save board state
 - replay
-- also count steps
 - store high score
 - possibility to load custom maps
 
-- new special tiles like in bricks
-- export to brick I ?
-- bricks levels
+Done:
+-----
+- change the cursor when dragging a piece
+- fix about box text

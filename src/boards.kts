@@ -12,11 +12,11 @@ The map name is inside <>
 The map description is inside @@
 
 Possible pieces are :
-* : main piece
+* : heart piece
 [a-zA-Z0-9] : other piece (can be used multiple times)
 # : wall
-- : wall that only the main piece can go through
-. : destination of the main piece
+- : wall that only the heart piece can go through
+. : destination of the heart piece
 
 
 

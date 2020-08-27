@@ -1,36 +1,29 @@
-#!/usr/bin/env python
+'''
+This script generates a big pixmap from all the tiles in the subdirs
 
-##############################################################################
-#                                generate_pix.py
-#
-# This small script is used to generate a big pixmap from all the tiles in the
-# subdirs
-#
-# Version   : $Id$
-# Copyright : (C) 2006 by Philippe Fremy <phil@freehackers.org>
-# License   : Gnu GPL (see file LICENSE)
-#
-#  This program is free software; you can redistribute it and/or modify 
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation; either version 2 of the License, or
-#  (at your option) any later version.
-#
-##############################################################################
+Author: Philippe Fremy
+License: Gnu GPL (see fname LICENSE)
+'''
 
 
-from qt import *
 import sys
-
 sys.path.append("../src")
-from enum import *
 
-def generate_pix( image, name ):
-	pix = QImage();
+from PyQt5.QtGui import QImage
+from PyQt5.QtWidgets import QApplication
+
+from kl_enum import pix_list, tile_list, TILE_SIZE, TILE_FILE_NAME
+
+def generate_pix( image: QImage, piece_name: str ) -> None:
+	'''Create an image the sub-tiles for the piece_name
+	'''
+	pix = QImage()
 	xoffset = 0
-	yoffset = tile_list[name] * TILE_SIZE
+	yoffset = tile_list[piece_name] * TILE_SIZE
 	for p in pix_list:
-		pname = name + "/" + p + ".xpm"
-		if not pix.load(pname): raise "Unable to load ", pname
+		pname = piece_name + "/" + p + ".xpm"
+		if not pix.load(pname):
+			raise ValueError("Unable to load " + pname)
 
 		for i in range( TILE_SIZE ):
 			for j in range( TILE_SIZE ):
@@ -38,12 +31,15 @@ def generate_pix( image, name ):
 
 		xoffset = xoffset + TILE_SIZE
 
-	    
-result = QImage( TILE_SIZE * len(pix_list), TILE_SIZE * len( tile_list ), 32 );
-for t in tile_list.keys():
-	print "Generating pixmap for ", t
+def main() -> None:
+	result = QImage( TILE_SIZE * len(pix_list), TILE_SIZE * len( tile_list ), QImage.Format_ARGB32 )
+	for t in tile_list.keys():
+		print("Generating pixmap for ", t)
 	generate_pix( result, t ) 
 
-print "../src/" + tile_file_name + " generated!"
-result.save( "../src/" + tile_file_name, "PNG" )
+	print("../src/" + TILE_FILE_NAME + " generated!")
+	result.save( "../src/" + TILE_FILE_NAME, "PNG" )
+
+if __name__ == '__main__':
+	main()
 	
