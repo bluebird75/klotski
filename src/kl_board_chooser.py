@@ -2,11 +2,11 @@
 Author: Philippe Fremy
 License: Gnu GPL (see file LICENSE)
 '''
-from typing import Union
+from typing import Union, Dict
 
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QListView, QWidget
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import QAbstractListModel, QModelIndex, QVariant
+from PyQt5.QtCore import QAbstractListModel, QModelIndex, QVariant, Qt
 
 from kl_enum import *
 from kl_map import KLMap
@@ -21,7 +21,7 @@ class KlMinimapProvider(QAbstractListModel):
         self.level_dict = level_dict
         self.mini_maps_dict = mini_maps_dict
 
-    def rowCount(self, parentIdx: QModelIndex) -> int:
+    def rowCount(self, parentIdx: QModelIndex) -> int:  # type: ignore # mypy does not understand the Qt overload of that one
         # -1 because we don't want to display splash screen as a board
         return len(self.level_dict) - 1
 

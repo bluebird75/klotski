@@ -70,7 +70,8 @@ class KLBoard(QGraphicsView):
                     img_mask.setPixel( x, y, 1 )
 
         KLBoard.tiles_mask = QBitmap()
-        if not KLBoard.tiles_mask.convertFromImage(img_mask, Qt.ImageConversionFlags(Qt.MonoOnly | Qt.ThresholdDither | Qt.AvoidDither)) :
+        if not KLBoard.tiles_mask.convertFromImage(img_mask,
+                Qt.ImageConversionFlags(Qt.MonoOnly | Qt.ThresholdDither | Qt.AvoidDither)) :   # type: ignore
             raise Exception("Could not convert to Bitmap !")
 
         KLBoard.pix_tiles = QPixmap()

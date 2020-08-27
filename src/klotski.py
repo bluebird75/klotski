@@ -12,10 +12,11 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QLCDNumber, QApplication, \
                             QMessageBox, QMenu, QHBoxLayout, QWidget, QSizePolicy
 from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import Qt
 
 from kl_enum import *
-from kl_map import load_maps
-from kl_board import KLMap, KLBoard
+from kl_map import load_maps, KLMap
+from kl_board import KLBoard
 from kl_board_chooser import KLBoardChooser, KlMinimapProvider
 
 def reverse_move( d: Tuple[int, int] ) -> Tuple[int, int]:
@@ -152,7 +153,7 @@ class Klotski (QMainWindow):
     def init_menu(self) -> None:
         file_menu = QMenu('Game', self)
         file_menu.addAction( "Boards", self.choose_board, Qt.CTRL + Qt.Key_B )
-        file_menu.addAction( "Quit", self.close, Qt.CTRL + Qt.Key_X )
+        file_menu.addAction( "Quit", self.close, Qt.CTRL + Qt.Key_X )   # type: ignore
         file_menu.addAction( "About Klotski", self.about)
 
         move_menu = QMenu('Moves', self)
