@@ -7,7 +7,7 @@ License: Gnu GPL (see fname LICENSE)
 '''
 
 from typing import Optional, Dict, List, Tuple
-import sys
+import sys, pathlib
 
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QLCDNumber, QApplication, \
                             QMessageBox, QMenu, QHBoxLayout, QWidget, QSizePolicy
@@ -245,7 +245,7 @@ class Klotski (QMainWindow):
 
 def main() -> None:
     a = QApplication( sys.argv )
-    maps = load_maps( "boards.kts" )
+    maps = load_maps( pathlib.Path(__file__).parent/"boards.kts" )
 
     firstBoard = None
     if len(sys.argv)>1: 

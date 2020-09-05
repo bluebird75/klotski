@@ -7,7 +7,7 @@ Author: Philippe Fremy
 License: Gnu GPL (see fname LICENSE)
 '''
 from typing import Optional, Tuple, List, Dict
-import math
+import math, pathlib
 
 from PyQt5.QtWidgets import QSizePolicy, QFrame, QGraphicsScene, QGraphicsView, QWidget, QGraphicsPixmapItem
 from PyQt5.QtGui import QImage, QBitmap, QPixmap, QPainter, QBrush, QColor, QMouseEvent
@@ -54,7 +54,7 @@ class KLBoard(QGraphicsView):
     def load_tiles(self) -> None:
         '''Load the tiles representation from the default filename and put the result and the bitmap mask
         in KLBoard.tiles_mask and KLBoard.pix_tiles'''
-        img_tile = QImage( TILE_FILE_NAME )
+        img_tile = QImage( str(pathlib.Path(__file__).parent/TILE_FILE_NAME) )
 
         w = img_tile.width()
         h = img_tile.height()
