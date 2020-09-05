@@ -13,8 +13,8 @@ from PyQt5.QtWidgets import QSizePolicy, QFrame, QGraphicsScene, QGraphicsView, 
 from PyQt5.QtGui import QImage, QBitmap, QPixmap, QPainter, QBrush, QColor, QMouseEvent
 from PyQt5.QtCore import QTimer, pyqtSignal, Qt
 
-from kl_enum import *
-from kl_map import KLMap
+from .kl_enum import *
+from .kl_map import KLMap
 
 def cos( a: Tuple[int, int], b: Tuple[int, int] ) -> float :
     '''computes cos(angle(a,b)) = scalar(a,b) / ( abs(a) * abs(b) )'''

@@ -10,7 +10,7 @@ from functools import reduce
 
 from PyQt5.QtCore import QObject, pyqtSignal
 
-from kl_enum import *
+from .kl_enum import *
 
 class KLMap(QObject):
 

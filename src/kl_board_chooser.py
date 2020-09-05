@@ -8,8 +8,8 @@ from PyQt5.QtWidgets import QDialog, QVBoxLayout, QListView, QWidget
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import QAbstractListModel, QModelIndex, QVariant, Qt
 
-from kl_enum import *
-from kl_map import KLMap
+from .kl_enum import *
+from .kl_map import KLMap
 
 class KlMinimapProvider(QAbstractListModel):
 

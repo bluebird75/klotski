@@ -14,10 +14,10 @@ from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QLCDNumber, QAppli
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt
 
-from kl_enum import *
-from kl_map import load_maps, KLMap
-from kl_board import KLBoard
-from kl_board_chooser import KLBoardChooser, KlMinimapProvider
+from .kl_enum import *
+from .kl_map import load_maps, KLMap
+from .kl_board import KLBoard
+from .kl_board_chooser import KLBoardChooser, KlMinimapProvider
 
 def reverse_move( d: Tuple[int, int] ) -> Tuple[int, int]:
     return ( -d[0], -d[1] )
