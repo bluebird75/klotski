@@ -32,11 +32,15 @@ setup(
 
     python_requires='>=3.5',
     install_requires=['PyQt5 >= 5.6', 'sip >= 4.18'],
-    packages=['src'],
+    packages=['klotski'],
+    package_dir={'klotski': 'src'},
+    package_data = {
+        'klotski': [ 'boards.kts', 'klotski-icon.png', 'klotski-tiles.png', 'README.md' ],
+    },
 
     entry_points={
         'gui_scripts': [
-            'klotski=src.klotski:main',
+            'klotski=klotski.klotski:main',
         ],
     },
 
