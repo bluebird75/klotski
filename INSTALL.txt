@@ -1,23 +1,10 @@
+You must have python already installed on your computer.
 
+Klotski install itself through pip:
 
-	Klotski installation instructions
-
-
-Windows users:
-==============
-
-Klotski comes in self-installing package.
-
-
-UNIX users:
-===========
-
-You need, Qt (2 or 3), python and PyQt
-
-To install klotski, just type 'make install'. 
-Then type 'klotski' to run klotski. 
-
-You can change the default installation location of klotski (/usr/local/... ) 
-by editing the Makefile and changing the prefix variable.
+    pip install klotski
+    
+To play:
+    python -m klotski
 
 
