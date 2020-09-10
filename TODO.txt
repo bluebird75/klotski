@@ -1,11 +1,10 @@
 
-- package under pip
-- disable undo/redo when appropriate (splash screen for example)
-- test with the oldest possible version of Python / PyQt
 - add automatic tests based on QEvent generation
 - select first board when opening the Board for the first time
 - package under windows
 - add reference to homepage on freehackers
+- add reference to solutions
+- fix the game icon
 
 
 Next release:
