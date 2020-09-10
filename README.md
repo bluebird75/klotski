@@ -4,6 +4,9 @@
 
 *Graphics by Ben Adler <benadler@bigfoot.de>*
 
+![Ane Rouge](https://raw.githubusercontent.com/bluebird75/klotski/master/pixmaps/klotski-forget-me-not.png)
+![](https://raw.githubusercontent.com/bluebird75/klotski/master/pixmaps/klotski-boards.png)
+
 Klotski is small brick game which has its root in a wooden game named (in french) *Ane rouge*.  The goal is to bring the red piece to its destination by moving other pieces. It sounds simple but it is a real brainteaser.
 
 There was a klotski game on Windows 3.1, and this is were all levels are from. 
