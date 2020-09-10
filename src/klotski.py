@@ -10,7 +10,7 @@ from typing import Optional, Dict, List, Tuple
 import sys, pathlib
 
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QLCDNumber, QApplication, \
-                            QMessageBox, QMenu, QHBoxLayout, QWidget, QSizePolicy
+                           QMessageBox, QMenu, QHBoxLayout, QWidget, QSizePolicy
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt
 
@@ -46,7 +46,6 @@ class Klotski (QMainWindow):
         self.init_menu()
 
         self.setWindowTitle( "Klotski" )
-        self.setWindowIcon( QIcon(QPixmap( "klotski-icon.png" ) ))
         self.title_label.setText( "Klotski" )
         if firstBoard:
             self.new_level( self.levels_by_id[int(firstBoard)] )
@@ -245,7 +244,9 @@ class Klotski (QMainWindow):
 
 def main() -> None:
     a = QApplication( sys.argv )
-    maps = load_maps( pathlib.Path(__file__).parent/"boards.kts" )
+    klotski_icon = QIcon(QPixmap(str(pathlib.Path(__file__).parent / "klotski-icon.ico")))
+    QApplication.setWindowIcon(klotski_icon)
+    maps = load_maps( str(pathlib.Path(__file__).parent/"boards.kts") )
 
     firstBoard = None
     if len(sys.argv)>1: 
@@ -261,6 +262,7 @@ def main() -> None:
                 print(maps[m].name)
 
     klotski = Klotski(maps, firstBoard)
+    klotski.setWindowIcon(klotski_icon)
     klotski.show()
     a.exec()
     del klotski
