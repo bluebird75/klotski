@@ -11,7 +11,7 @@ import math, pathlib
 
 from PyQt5.QtWidgets import QSizePolicy, QFrame, QGraphicsScene, QGraphicsView, QWidget, QGraphicsPixmapItem
 from PyQt5.QtGui import QImage, QBitmap, QPixmap, QPainter, QBrush, QColor, QMouseEvent
-from PyQt5.QtCore import QTimer, pyqtSignal, Qt
+from PyQt5.QtCore import QTimer, pyqtSignal, QSize
 
 from .kl_enum import *
 from .kl_map import KLMap
@@ -174,10 +174,12 @@ class KLBoard(QGraphicsView):
     def set_map(self, m: KLMap) -> None:
         m.sig_del_s_wall.connect(self.del_s_wall)
         self.klmap = m
-        self.setFixedSize( self.klmap.w * TILE_SIZE, self.klmap.h * TILE_SIZE )
+        # note: the size of the new map is picked up by the sizeHint()
         self.generate_scene(m)
         self.update()
 
+    def sizeHint(self) -> QSize:
+        return QSize( self.klmap.w * TILE_SIZE, self.klmap.h * TILE_SIZE )
 
     def set_tile_pix(self, pix: QPixmap, mask: QBitmap, x: int, y: int) -> None:
         '''Create the pixmap for the part of the piece located at x,y .
