@@ -8,12 +8,9 @@ License: Gnu GPL (see fname LICENSE)
 
 import sys
 
-sys.path.append("../src")
-
 from PyQt5.QtGui import QImage
-from PyQt5.QtWidgets import QApplication
 
-from kl_enum import pix_list, tile_list, TILE_SIZE, TILE_FILE_NAME
+from src.kl_enum import pix_list, tile_list, TILE_SIZE, TILE_FILE_NAME
 
 
 def generate_pix(image: QImage, piece_name: str) -> None:

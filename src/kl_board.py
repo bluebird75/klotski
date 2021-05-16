@@ -11,9 +11,10 @@ import math, pathlib
 
 from PyQt5.QtWidgets import QSizePolicy, QFrame, QGraphicsScene, QGraphicsView, QWidget, QGraphicsPixmapItem
 from PyQt5.QtGui import QImage, QBitmap, QPixmap, QPainter, QBrush, QColor, QMouseEvent
-from PyQt5.QtCore import QTimer, pyqtSignal, QSize
+from PyQt5.QtCore import QTimer, pyqtSignal, QSize, Qt
 
-from .kl_enum import *
+from .kl_enum import (TILE_FILE_NAME, TRANSP_COLOR, MINI_TILE_SIZE, Piece,
+                      Tile, TILE_SIZE, PIX_SIZE, piece_tile, is_piece, mini_tile_colors)
 from .kl_map import KLMap
 
 
@@ -69,9 +70,7 @@ class KLBoard(QGraphicsView):
                     img_mask.setPixel(x, y, 1)
 
         KLBoard.tiles_mask = QBitmap()
-        if not KLBoard.tiles_mask.convertFromImage(
-            img_mask, Qt.ImageConversionFlags(Qt.MonoOnly | Qt.ThresholdDither | Qt.AvoidDither)
-        ):  # type: ignore
+        if not KLBoard.tiles_mask.convertFromImage(img_mask, Qt.MonoOnly | Qt.ThresholdDither | Qt.AvoidDither): # type: ignore
             raise Exception("Could not convert to Bitmap !")
 
         KLBoard.pix_tiles = QPixmap()

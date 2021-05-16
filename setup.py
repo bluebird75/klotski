@@ -1,3 +1,4 @@
+# type: ignore
 '''
 Author: Philippe Fremy
 License: Gnu GPL (see fname LICENSE)
