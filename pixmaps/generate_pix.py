@@ -4,9 +4,10 @@ This script generates a big pixmap from all the tiles in the subdirs
 Author: Philippe Fremy
 License: Gnu GPL (see fname LICENSE)
 '''
-
-
 import sys
+
+if __name__ == '__main__':
+    sys.path.append('..')
 
 from PyQt5.QtGui import QImage
 
