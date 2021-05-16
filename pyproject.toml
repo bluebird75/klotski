@@ -2,3 +2,4 @@
 [tool.black]
 line-length = 119
 target-version = ['py36']
+skip-string-normalization = true
