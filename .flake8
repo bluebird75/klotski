@@ -1,0 +1,4 @@
+[flake8]
+max-line-length = 119
+exclude = build
+ignore = F405, E401, W503, F403, E127

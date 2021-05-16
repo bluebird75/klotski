@@ -30,7 +30,8 @@ Graphics by Ben Adler <benadler@bigfoot.de
 
 Klotski is the reborn version of a game existing under Windows 3.1 . This is where all the levels are coming from.
 
-Klotski has been written in 2000 in Python with the graphical toolkit Qt. This was my first big program ever written in Python.
+Klotski has been written in 2000 in Python with the graphical toolkit Qt. This was my first big program 
+ever written in Python.
 
 For more information about Python, see http://www.python.org
 For more information about Qt, see http://www.qt.io.
@@ -38,6 +39,7 @@ For more information about PyQt, see https://www.riverbankcomputing.com/software
 """
     % VERSION
 )
+
 
 # Piece is used in the map structure
 class Piece:
@@ -54,7 +56,7 @@ class Piece:
 def is_piece(p: str) -> bool:
     '''Analyse the graphic element described by this string and return True if this is a moveable block'''
     for i in p:
-        if not i in Piece.pieces:
+        if i not in Piece.pieces:
             return False
     return True
 

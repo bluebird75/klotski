@@ -5,7 +5,6 @@ Author: Philippe Fremy
 License: Gnu GPL (see fname LICENSE)
 '''
 
-
 from src.klotski import main
 
 if __name__ == '__main__':

@@ -202,10 +202,10 @@ class Klotski(QMainWindow):
 
         if pid != last_move_pid:
             self.move_index = self.move_index + 1
-            self.move_list[self.move_index :] = [(pid, delta)]
+            self.move_list[self.move_index:] = [(pid, delta)]
             self.set_move_nb(self.moves + 1)
         else:
-            self.move_list[self.move_index :] = [(pid, (last_move[0] + delta[0], last_move[1] + delta[1]))]
+            self.move_list[self.move_index:] = [(pid, (last_move[0] + delta[0], last_move[1] + delta[1]))]
 
         if self.klmap.is_game_won():
             QMessageBox.information(
