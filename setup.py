@@ -8,8 +8,6 @@ from src.kl_enum import VERSION
 
 from setuptools import setup
 
-import os, re
-
 # strip out build status
 LONG_DESC = ''.join(open('README.md').readlines()[1:])
 
