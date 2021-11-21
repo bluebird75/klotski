@@ -18,3 +18,33 @@ Done:
 -----
 - change the cursor when dragging a piece
 - fix about box text
+
+Release process:
+----------------
+1. Upload to testpypi.org:
+
+    >py -3.8 -m twine upload --repository testpypi dist/*
+
+    Note that if you have the .pypi file in your home, things will
+    be simpler: no password required.
+
+
+2. test the testpypi.org version:
+
+    py -m venv env_klotski
+    env_klotski\Scripts\activate
+    pip install pyqt5 sip
+    pip install --index-url https://test.pypi.org/simple/ klotski
+    python -m klotski
+
+3. Upload the final version
+
+    >py -3.8 -m twine upload dist/*
+
+4. test the final version
+
+    py -m venv env_klotski
+    env_klotski\Scripts\activate
+    pip install klotski
+    python -m klotski
+
