@@ -6,8 +6,14 @@ Author: Philippe Fremy
 License: Gnu GPL (see fname LICENSE)
 '''
 
+
 from typing import Optional, Dict, List, Tuple
 import sys, pathlib
+
+if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+    RUNNING_IN_PYINSTALLER = True
+else:
+    RUNNING_IN_PYINSTALLER = False
 
 from PyQt5.QtWidgets import (
     QMainWindow,
@@ -264,9 +270,15 @@ class Klotski(QMainWindow):
 
 def main() -> None:
     a = QApplication(sys.argv)
-    klotski_icon = QIcon(QPixmap(str(pathlib.Path(__file__).parent / "klotski-icon.ico")))
+    if RUNNING_IN_PYINSTALLER:
+        path_boards_kts = pathlib.Path(__file__).parent.parent / "boards.kts"
+        klotski_icon = QIcon(QPixmap(str(pathlib.Path(__file__).parent.parent / "klotski-icon.ico")))
+    else:
+        klotski_icon = QIcon(QPixmap(str(pathlib.Path(__file__).parent / "klotski-icon.ico")))
+        path_boards_kts = pathlib.Path(__file__).parent / "boards.kts"
+
     QApplication.setWindowIcon(klotski_icon)
-    maps = load_maps(str(pathlib.Path(__file__).parent / "boards.kts"))
+    maps = load_maps(str(path_boards_kts))
 
     firstBoard = None
     if len(sys.argv) > 1:
