@@ -13,26 +13,22 @@ There was a klotski game on Windows 3.1, and this is where all levels are from.
 
 To run Klotski:
 
-1. If you are Windows, simply download the zip package here. Extract it and run 
-   the klotski.exe
+1. If you are Windows, simply download the exe file from [here](https://github.com/bluebird75/klotski/releases/tag/VERSION_1_3_2) and run it.
    
 
-2. In other situations, you need to use Python to run it:
-
-Klotski requires Python 3.5 (at least) and PyQt 5. To install Klotski, you must already have Python installed on your computer. 
+2. In other situations, you need to use Python to run it. Klotski requires Python 3.5 (at least) and PyQt 5.
 
 Type: 
 
-    pip install klotski
+    python3 -m pip install klotski
     
 To play:
 
-    python -m klotski
+    python3 -m klotski
 
 
 
-
-This was my first program using python and PyQt in 2001. I must say I have enjoyed it a lot: Python and Qt are both excellent, easy to use and well documented. I have never been able to implement my ideas so quickly. The usual cycle *think, organise into organigram, code, compile, correct compiling errors, run, correct bugs, run, it works* was reduced to *think, code, run, it works*. Because of the simplicity and the power the python language, my ideas could be expressed very clearly and I could concentrate on what I wanted to do instead of how I needed to code it. The result is a simple and clean program, that was coded in half the time (and probably less) it would have taken to do it in C++.
+This was my first program using Python and PyQt back in 2001.
 
 Contributions and feedback are gladly welcome. Especially, bug, new levels or new tile themes. To add new levels, just edit [boards.kts](https://github.com/bluebird75/klotski/blob/master/src/boards.kts), the format is pretty simple.  To add new tile themes, look at [pixmap/THEMES.txt](https://github.com/bluebird75/klotski/blob/master/pixmaps/THEMES.txt) and replace the image klotski-tiles.png .
 
@@ -42,8 +38,10 @@ Full solution to *Ane Rouge* are available [here](https://www.freehackers.org/Kl
 
 ### Release history
 
-#### v1.3.1: 16 May 2021
+#### v1.3.2: 22 Nov 2021
+* fix bug due to new window resizing capability. Add executable for Windows.
 
+#### v1.3.1: 16 May 2021
 * window may be resized smaller than the board, to fit smaller screens 
 
 #### v1.3: 10 September 2020
