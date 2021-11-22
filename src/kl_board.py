@@ -52,7 +52,7 @@ class KLBoard(QGraphicsView):
         self.drag_y = -1
         self.drag_timer = QTimer(self)
         self.drag_timer.setSingleShot(True)
-        self.drag_timer.timeout.connect(self.set_draging)
+        self.drag_timer.timeout.connect(self.set_dragging)
 
     pix_tiles = None  # type: Optional[QPixmap]
     tiles_mask = None  # type: Optional[QBitmap]
@@ -317,7 +317,7 @@ class KLBoard(QGraphicsView):
         self.drag_y = e.y() // TILE_SIZE
         self.drag_timer.start(500)
 
-    def set_draging(self) -> None:
+    def set_dragging(self) -> None:
         assert self.is_clicking, "timer expired while not clicking!!!"
         self.is_draging = True
         self.setCursor(Qt.ClosedHandCursor)
