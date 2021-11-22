@@ -54,11 +54,15 @@ class KLMap(QObject):
             return Piece.none
         return self.xymap[y][x]
 
+    def isPidMoveable(self, pid: str) -> bool:
+        return (pid == Piece.heart or is_piece(pid))
+
+
     def canMove(self, pid: str, dx: int, dy: int) -> bool:
         if abs(dx) + abs(dy) != 1:
             raise ValueError("test of illegal move")
 
-        if not (pid == Piece.heart or is_piece(pid)):
+        if not self.isPidMoveable(pid):
             return False
 
         for x in range(self.w):

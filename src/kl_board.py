@@ -306,15 +306,22 @@ class KLBoard(QGraphicsView):
             self.m_scene.update()
 
     def mousePressEvent(self, e: QMouseEvent) -> None:
-        pid = self.klmap.pid(e.x() // TILE_SIZE, e.y() // TILE_SIZE)
+        p = self.mapToScene(e.x(), e.y())
+        x, y = int(p.x()), int(p.y())
+        pid = self.klmap.pid(x // TILE_SIZE, y // TILE_SIZE)
+
+        # check if pid is moveable else, abort
+        if not self.klmap.isPidMoveable(pid):
+            return
+
         if len(self.klmap.possibleMove(pid)) == 0:
             return
 
         self.is_clicking = True
         self.is_draging = False
         self.drag_pid = pid
-        self.drag_x = e.x() // TILE_SIZE
-        self.drag_y = e.y() // TILE_SIZE
+        self.drag_x = x // TILE_SIZE
+        self.drag_y = y // TILE_SIZE
         self.drag_timer.start(500)
 
     def set_dragging(self) -> None:
@@ -341,17 +348,19 @@ class KLBoard(QGraphicsView):
             self.is_clicking = False
             return
 
-        # tile was dragged
+        # tile was dragged and has already moved to its destination
         self.drag_timer.stop()
         self.is_clicking = False
         self.is_draging = False
 
     def mouseMoveEvent(self, e: QMouseEvent) -> None:
+        p = self.mapToScene(e.x(), e.y())
+        x, y = int(p.x()), int(p.y())
         if not self.is_clicking:
             return
 
-        dx = e.x() // TILE_SIZE - self.drag_x
-        dy = e.y() // TILE_SIZE - self.drag_y
+        dx = x // TILE_SIZE - self.drag_x
+        dy = y // TILE_SIZE - self.drag_y
         d = dx, dy
         if d == (0, 0):
             return
