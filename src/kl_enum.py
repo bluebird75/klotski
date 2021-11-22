@@ -10,7 +10,7 @@ from typing import Dict, List
 from PyQt5.QtGui import qRgb
 from PyQt5.QtCore import Qt
 
-VERSION = '1.3.1'
+VERSION = '1.3.2'
 
 TILE_SIZE = 32
 TRANSP_COLOR = qRgb(0, 0, 0)
