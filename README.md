@@ -34,7 +34,7 @@ Contributions and feedback are gladly welcome. Especially, bug, new levels or ne
 
 For any bugs or feedback, please use the GitHub page: https://github.com/bluebird75/klotski 
 
-Full solution to *Ane Rouge* are available [here](https://www.freehackers.org/Klotski:Solution_of_Ane_Rouge).
+Full solution to *Ane Rouge* are available [here](https://github.com/bluebird75/whoiam/blob/master/archives/Klotski_Solution_of_Ane_Rouge.md).
 
 ### Release history
 
